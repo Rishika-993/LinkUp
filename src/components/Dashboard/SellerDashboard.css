@@ -1,0 +1,29 @@
+.seller-dashboard {
+    width: 100%;
+}
+
+.seller-dashboard h1 {
+    margin-top: 0;
+}
+
+.dashboard-subtitle {
+    color: var(--text-light);
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.buyer-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.no-buyers-card {
+    background: var(--card-background);
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-light);
+}

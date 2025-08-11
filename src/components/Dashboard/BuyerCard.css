@@ -1,0 +1,129 @@
+.buyer-card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.buyer-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.buyer-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.buyer-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.buyer-info {
+    flex: 1;
+}
+
+.buyer-name {
+    margin: 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.verified-badge {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.buyer-headline {
+    margin: 0.25rem 0 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.buyer-card-body {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.buyer-metric {
+    margin-bottom: 1rem;
+}
+
+.metric-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.metric-value {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.industry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background-color: #eef5ff;
+    color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.85rem;
+}
+
+.buyer-card-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.btn-reject,
+.btn-accept {
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s;
+}
+
+.btn-reject {
+    background-color: #fff;
+    color: var(--text-light);
+}
+
+.btn-reject:hover {
+    background-color: #f7f7f7;
+    border-color: #ddd;
+}
+
+.btn-accept {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.btn-accept:hover {
+    background-color: #3a7bc8;
+    border-color: #3a7bc8;
+}
