@@ -1,19 +1,38 @@
 /* Global Styles */
 
 :root {
-  --primary-color: #4A90E2;
-  /* A friendly, trustworthy blue */
-  --secondary-color: #F5A623;
-  /* A warm, optimistic orange for accents */
-  --background-color: #F7F9FC;
-  /* A very light, clean grey */
-  --text-color: #333;
+  /* Light Theme Variables (Default) */
+  --primary-color: #834E14;      /* A deep, rich brown */
+  --secondary-color: #F8D25F;    /* A vibrant, warm yellow */
+  --background-color: #F7F9FC;   /* A very light, clean grey */
+  --text-color: #3E3E3E;         /* A dark, readable gray */
   --text-light: #666;
   --border-color: #EAEAEA;
   --card-background: #FFFFFF;
+  --heading-color: var(--primary-color); /* Brown for readability in light mode */
+  --button-background: #3E3E3E;
+  --button-background-hover: #000000;
+  --button-text-color: #F8D25F;
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+}
+
+/* Dark Theme Variables */
+body.dark {
+  --primary-color: #F8D25F;      /* Yellow stands out well in dark mode */
+  --secondary-color: #834E14;    /* Brown for secondary elements */
+  --background-color: #000000;   /* A standard dark theme background */
+  --text-color: #EAEAEA;         /* Light gray for text, not pure white */
+  --text-light: #A0A0A0;
+  --border-color: #3E3E3E;       /* User-specified gray for borders */
+  --card-background: #121212;    /* A slightly lighter dark for cards */
+  --heading-color: var(--primary-color); /* Yellow in dark mode */
+  --button-background: #000000;
+  --button-background-secondary: #1E1E1E;
+  --button-background-hover: #F8D25F;
+  --button-text-color: #F8D25F;
+  --button-background-danger: #DC2626;
 }
 
 body {
@@ -23,4 +42,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--background-color);
   color: var(--text-color);
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color);
+  transition: color 0.2s ease-in-out;
+}
+
+button {
+  background-color: var(--button-background);
+  color: var(--button-text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--button-background-hover);
 }

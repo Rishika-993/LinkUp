@@ -88,9 +88,9 @@
 
 /* General Button Styles (can be moved to a global file) */
 .btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    border: 2px solid var(--button-background);
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     font-size: 1rem;
@@ -100,7 +100,9 @@
 }
 
 .btn-primary:hover {
-    background-color: #3a7bc8;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    font-weight: 600;
 }
 
 .btn-secondary {

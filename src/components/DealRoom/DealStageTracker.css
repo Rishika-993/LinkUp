@@ -1,0 +1,79 @@
+.deal-stage-tracker {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.deal-stage-tracker h2 {
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.stages-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 120px;
+  position: relative;
+}
+
+.stage-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid var(--border-color);
+  background-color: var(--card-background);
+  margin-bottom: 0.75rem;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.stage-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+.connector {
+  flex-grow: 1;
+  height: 4px;
+  background-color: var(--border-color);
+  position: relative;
+  top: 15px; /* Aligns with center of icon */
+  transition: background-color 0.3s ease;
+}
+
+/* Status-specific styles */
+.stage-completed .stage-icon {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.stage-completed .stage-name {
+  color: var(--text-color);
+}
+
+.stage-completed.connector {
+  background-color: var(--primary-color);
+}
+
+.stage-active .stage-icon {
+  border-color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+.stage-active .stage-name {
+  color: var(--primary-color);
+  font-weight: bold;
+}
