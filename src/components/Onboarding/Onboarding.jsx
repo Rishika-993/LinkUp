@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { onboardingQuestions, industryTags, currencies } from '../../mockData';
+import { useUser } from '../../contexts/UserContext';
 import './Onboarding.css';
 
 /**
@@ -13,6 +14,7 @@ const OnboardingWizard = () => {
   const [errors, setErrors] = useState({});
   const [selectedCurrency, setSelectedCurrency] = useState('USD');
   const navigate = useNavigate();
+  const { setUser, updateUser } = useUser();
 
   const questions = userType === 'buyer' ? onboardingQuestions.buyer : onboardingQuestions.seller;
 
@@ -113,8 +115,13 @@ const OnboardingWizard = () => {
     if (currentStep < questions.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      // Onboarding complete, navigate to the dashboard
-      console.log('Onboarding Answers:', answers);
+      // Save user data when onboarding is complete
+      const userData = {
+        type: userType,
+        name: answers.q1 || 'User',
+        ...answers
+      };
+      updateUser(userData);
       navigate('/dashboard');
     }
   };
