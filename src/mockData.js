@@ -1,3 +1,27 @@
+// Add this constant for industry tags
+export const industryTags = [
+  'SaaS',
+  'E-commerce',
+  'FinTech',
+  'Healthcare',
+  'Education',
+  'Real Estate',
+  'Manufacturing',
+  'Retail',
+  'Logistics',
+  'Marketing',
+  'Consulting',
+  'Technology',
+  'Food & Beverage',
+  'Entertainment',
+  'Travel',
+  'Automotive',
+  'Energy',
+  'Agriculture',
+  'Construction',
+  'Professional Services'
+];
+
 export const buyers = [
   {
     id: 1,
@@ -48,18 +72,149 @@ export const buyers = [
   
 export const onboardingQuestions = {
   buyer: [
-    { id: 'q1', type: 'text', label: "What's your full name or your fund's name?" },
-    { id: 'q2', type: 'textarea', label: 'In one sentence, what is your professional background or investment focus? (This will be your profile headline)' },
-    { id: 'q3', type: 'tags', label: 'What industries are you most interested in?' },
-    { id: 'q4', type: 'slider', label: 'What is your target investment range?', min: 50000, max: 10000000, step: 50000 },
-    { id: 'q5', type: 'choice', label: 'What is your ideal level of post-acquisition involvement?', options: ['Active Operator', 'Strategic Advisor', 'Passive Investor'] },
+    { 
+      id: 'q1', 
+      type: 'text', 
+      label: "What's your full name or your fund's name?",
+      required: true,
+      minLength: 4,
+      maxLength: 50
+    },
+    { 
+      id: 'q2', 
+      type: 'textarea', 
+      label: 'In one sentence, what is your professional background or investment focus?',
+      required: true,
+      minLength: 20,
+      maxLength: 200
+    },
+    { 
+      id: 'q3', 
+      type: 'tags', 
+      label: 'What industries are you most interested in?',
+      required: true,
+      minTags: 1,
+      maxTags: 5
+    },
+    { 
+      id: 'q4', 
+      type: 'investment-range',
+      label: 'What is your target investment range?',
+      required: true,
+      min: {
+        USD: 50000,
+        INR: 4000000  // 40 Lakhs INR
+      },
+      max: {
+        USD: 10000000,
+        INR: 800000000  // 80 Crore INR
+      },
+      step: {
+        USD: 50000,
+        INR: 4000000
+      }
+    },
+    { 
+      id: 'involvement',
+      type: 'involvement',
+      label: 'What is your ideal level of post-acquisition involvement?',
+      required: true
+    },
   ],
   seller: [
-    { id: 'q1', type: 'text', label: "What's the name of your business?" },
-    { id: 'q2', type: 'text', label: 'What industry is your business in?' },
-    { id: 'q3', type: 'currency', label: "What was your last full year's revenue?" },
-    { id: 'q4', type: 'currency', label: "What was your last full year's EBITDA?" },
-    { id: 'q5', type: 'textarea', label: 'In a few sentences, why are you considering selling your business?' },
+    { 
+      id: 'q1', 
+      type: 'text', 
+      label: "What's the name of your business?",
+      required: true,
+      minLength: 2,
+      maxLength: 100
+    },
+    { 
+      id: 'q2', 
+      type: 'tags', 
+      label: 'Which industry categories best describe your business?',
+      required: true,
+      minTags: 1,
+      maxTags: 3,
+      options: industryTags  // Using the predefined industry tags array
+    },
+    { 
+      id: 'q3', 
+      type: 'textarea', 
+      label: 'Briefly describe what your business does and its core offering',
+      required: true,
+      minLength: 50,
+      maxLength: 300
+    },
+    { 
+      id: 'q4', 
+      type: 'investment-range', // Changed from 'currency' to 'investment-range'
+      label: "What was your last full year's revenue?",
+      required: true,
+      min: {
+        USD: 100000,
+        INR: 8000000  // 80 Lakhs INR
+      },
+      max: {
+        USD: 50000000,
+        INR: 4000000000  // 40 Crore INR
+      },
+      step: {
+        USD: 10000,
+        INR: 800000
+      }
+    },
+    { 
+      id: 'q5', 
+      type: 'investment-range', // Changed from 'currency' to 'investment-range'
+      label: "What was your last full year's EBITDA?",
+      required: true,
+      min: {
+        USD: 0,
+        INR: 0
+      },
+      max: {
+        USD: 20000000,
+        INR: 1600000000  // 16 Crore INR
+      },
+      step: {
+        USD: 5000,
+        INR: 400000
+      }
+    },
+    {
+      id: 'q6',
+      type: 'involvement',
+      label: 'What is your preferred transition arrangement?',
+      required: true,
+      options: [
+        {
+          id: 'immediate',
+          title: 'Immediate Exit',
+          description: 'Complete handover after closing with minimal transition period'
+        },
+        {
+          id: 'short_term',
+          title: 'Short-term Transition',
+          description: '3-6 months transition period to ensure smooth handover of operations'
+        },
+        {
+          id: 'long_term',
+          title: 'Long-term Involvement',
+          description: 'Willing to stay involved for 1+ years in a reduced capacity'
+        }
+      ]
+    },
+    {
+      id: 'q7',
+      type: 'textarea',
+      label: 'In a few sentences, why are you considering selling your business?',
+      required: true,
+      minLength: 50,
+      maxLength: 500,
+      placeholder: 'E.g., retirement, pursuing new ventures, seeking growth capital...'
+    }
   ],
 };
 
@@ -70,5 +225,9 @@ export const dealStages = [
   { id: 4, name: 'Letter of Intent (LOI)', status: 'pending' },
   { id: 5, name: 'Closing', status: 'pending' },
 ];
-  
-  
+
+export const currencies = [
+  { code: 'USD', symbol: '$' },
+  { code: 'INR', symbol: '₹' }
+];
+
