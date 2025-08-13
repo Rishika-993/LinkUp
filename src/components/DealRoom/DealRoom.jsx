@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DealStageTracker from "./DealStageTracker";
 import { Line, Doughnut } from "react-chartjs-2";
 import {
@@ -14,7 +14,6 @@ import {
 } from "chart.js";
 import "./DealRoom.css";
 
-// Register Chart.js components
 ChartJS.register(
   LineElement,
   PointElement,
@@ -47,9 +46,9 @@ const riskData = {
       label: "Risk Distribution",
       data: [60, 30, 10],
       backgroundColor: [
-        "rgba(52, 196, 52, 0.7)", // Green for low risk
-        "rgba(246, 192, 52, 0.7)", // Yellow for medium risk
-        "rgba(246, 52, 52, 0.7)", // Red for high risk
+        "rgba(52, 196, 52, 0.7)", 
+        "rgba(246, 192, 52, 0.7)", 
+        "rgba(246, 52, 52, 0.7)", 
       ],
       borderWidth: 1,
     },
@@ -62,6 +61,13 @@ const riskData = {
 const DealRoom = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
+  const labelColor = getComputedStyle(document.documentElement)
+    .getPropertyValue("--text-color")
+    .trim();
+  const gridColor = getComputedStyle(document.documentElement)
+    .getPropertyValue("--border-color")
+    .trim();
+  
   const handleAnalyze = () => {
     setIsAnalyzing(true);
     // Simulate API call
@@ -78,7 +84,6 @@ const DealRoom = () => {
       <DealStageTracker />
 
       <div className="deal-room-widgets">
-        {/* Left column */}
         <div className="widget-column">
           <div className="widget">
             <h3>Secure Document Vault</h3>
@@ -98,7 +103,6 @@ const DealRoom = () => {
           </div>
         </div>
 
-        {/* Right column */}
         <div className="widget ai-widget">
           <div>
             <div className="ai-widget-header">
@@ -150,6 +154,7 @@ const DealRoom = () => {
                 legend: {
                   position: "bottom",
                   labels: {
+                    color: labelColor,
                     padding: 20,
                     font: {
                       size: 14,

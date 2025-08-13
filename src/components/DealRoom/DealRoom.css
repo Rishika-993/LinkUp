@@ -6,7 +6,7 @@
 .deal-room-header {
     text-align: center;
     margin-bottom: 3rem;
-    padding-top: 2rem;
+    padding-top: 4rem;
 }
 
 .deal-room-header h1 {
@@ -22,7 +22,6 @@
     margin: 0.5rem auto 0;
 }
 
-/* Main widgets container - top row */
 .deal-room-widgets {
     display: flex;
     gap: 2rem;
