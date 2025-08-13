@@ -44,8 +44,18 @@ const BuyerCard = ({ buyer, onDecision }) => {
         </div>
       </div>
       <div className="buyer-card-actions">
-        <button onClick={(e) => handleActionClick(e, onDecision)} className="btn-reject">Reject</button>
-        <button onClick={(e) => handleActionClick(e, onDecision)} className="btn-accept">Accept</button>
+        <button 
+          onClick={(e) => handleActionClick(e, () => onDecision(buyer.id, 'rejected'))} 
+          className="btn-reject"
+        >
+          Reject
+        </button>
+        <button 
+          onClick={(e) => handleActionClick(e, () => onDecision(buyer.id, 'accepted'))} 
+          className="btn-accept"
+        >
+          Accept
+        </button>
       </div>
     </div>
   );

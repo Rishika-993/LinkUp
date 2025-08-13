@@ -13,7 +13,11 @@ import { UserProvider, useUser } from "./contexts/UserContext";
 // Update the AuthRedirect component
 const AuthRedirect = () => {
   const { user } = useUser();
-  return user ? <Navigate to="/dashboard" replace /> : <Navigate to="/onboarding" replace />;
+  return user ? (
+    <Navigate to="/dashboard" replace />
+  ) : (
+    <Navigate to="/onboarding" replace />
+  );
 };
 
 // Add a new component to handle onboarding access

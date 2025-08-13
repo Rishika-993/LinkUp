@@ -18,7 +18,9 @@ const Navbar = () => {
     if (names.length === 1) {
       return names[0].charAt(0).toUpperCase();
     }
-    return (names[0].charAt(0) + names[names.length - 1].charAt(0)).toUpperCase();
+    return (
+      names[0].charAt(0) + names[names.length - 1].charAt(0)
+    ).toUpperCase();
   };
 
   // Close menu when clicking outside
@@ -47,13 +49,16 @@ const Navbar = () => {
   // Close profile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (profileMenuRef.current && !profileMenuRef.current.contains(event.target)) {
+      if (
+        profileMenuRef.current &&
+        !profileMenuRef.current.contains(event.target)
+      ) {
         setShowProfileMenu(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -99,12 +104,12 @@ const Navbar = () => {
                 {theme === "light" ? "🌙" : "☀️"}
               </button>
               <div className="profile-wrapper" ref={profileMenuRef}>
-                <div 
+                <div
                   className="profile-icon"
                   onClick={() => user && setShowProfileMenu(!showProfileMenu)}
-                  style={{ 
-                    backgroundColor: user ? '#007bff' : '#6c757d',
-                    cursor: user ? 'pointer' : 'default'
+                  style={{
+                    backgroundColor: user ? "#007bff" : "#6c757d",
+                    cursor: user ? "pointer" : "default",
                   }}
                 >
                   {getInitials()}
