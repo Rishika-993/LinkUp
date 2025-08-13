@@ -21,14 +21,24 @@ function DealStageTracker() {
       <div className="stages-container">
         {dealStages.map((stage, index) => (
           <React.Fragment key={stage.id}>
-            <div className={`stage ${getStatusClass(stage.status)}`}>
-              <div className="stage-icon"></div>
-              <div className="stage-name">{stage.name}</div>
+            <div
+              className={`stage ${getStatusClass(stage.status)}`}
+              title={`${stage.name}: ${stage.status.charAt(0).toUpperCase() + stage.status.slice(1)}`}
+            >
+              <div className="stage-icon">
+                {stage.status === 'completed' ? (
+                  <span className="checkmark">✓</span>
+                ) : (
+                  <span className="stage-number">{index + 1}</span>
+                )}
+              </div>
+              <div className="stage-name">
+                <span className="stage-label">{stage.name}</span>
+                {stage.date && <span className="stage-date">{stage.date}</span>}
+              </div>
             </div>
             {index < dealStages.length - 1 && (
-              <div
-                className={`connector ${getStatusClass(stage.status)}`}
-              ></div>
+              <div className={`connector ${getStatusClass(stage.status)}`} />
             )}
           </React.Fragment>
         ))}

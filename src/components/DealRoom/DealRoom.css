@@ -6,25 +6,28 @@
 .deal-room-header {
     text-align: center;
     margin-bottom: 3rem;
+    padding-top: 2rem;
 }
 
 .deal-room-header h1 {
     margin-top: 0;
     font-size: 2.2rem;
+    margin-bottom: 0.5rem;
 }
 
 .deal-room-header p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--text-light);
     max-width: 600px;
     margin: 0.5rem auto 0;
 }
 
+/* Main widgets container - top row */
 .deal-room-widgets {
-    margin-top: 3rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 2rem;
+    align-items: stretch;
+    margin-bottom: 2rem;
 }
 
 .widget {
@@ -32,6 +35,13 @@
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.widget:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .widget h3 {
@@ -46,10 +56,33 @@
     margin-bottom: 2rem;
 }
 
+/* Column layouts */
+.widget-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 1;
+    min-height: 100%;
+}
+
+/* Bottom widgets row */
+.chart-widgets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
 .ai-widget {
     border-color: var(--primary-color);
     border-width: 2px;
     position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(to bottom right, var(--card-background), rgba(52, 120, 246, 0.05));
 }
 
 .ai-widget-header {
@@ -65,4 +98,77 @@
     padding: 0.2rem 0.6rem;
     border-radius: 12px;
     font-weight: bold;
+}
+
+.chart-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--secondary-background);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.chart-widgets .widget {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-widgets .widget h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(52, 120, 246, 0.2);
+}
+
+.btn-primary.loading {
+    position: relative;
+    background: var(--primary-color);
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+.btn-primary.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    right: 1rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .deal-room-widgets {
+        flex-direction: column;
+    }
+
+    .chart-widgets {
+        grid-template-columns: 1fr;
+    }
+
+    .widget {
+        padding: 1.5rem;
+    }
+
+    .deal-room-header h1 {
+        font-size: 1.8rem;
+    }
 }

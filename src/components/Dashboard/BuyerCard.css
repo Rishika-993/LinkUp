@@ -102,8 +102,8 @@
     margin-top: auto;
 }
 
-.btn-reject,
-.btn-accept {
+/* Shared button styles */
+.btn {
     padding: 0.75rem;
     border-radius: 8px;
     font-size: 1rem;
@@ -111,19 +111,14 @@
     cursor: pointer;
     border: 1px solid var(--border-color);
     transition: all 0.2s;
+    outline: 2px solid transparent;
 }
 
-.btn-reject {
-    background-color: var(--button-background-secondary);
-    color: var(--text-light);
+.btn:focus {
+    outline: 2px solid var(--primary-color);
 }
 
-.btn-reject:hover {
-    background-color: var(--button-background-danger);
-    color: white;
-    border: none;
-}
-
+/* Accept button */
 .btn-accept {
     background-color: var(--button-background);
     color: var(--button-text-color);
@@ -134,5 +129,17 @@
     background-color: var(--button-background-hover);
     border: 2px solid var(--background-color);
     font-weight: 600;
-    color: var(--background-color)
+    color: var(--background-color);
+}
+
+/* Reject button */
+.btn-reject {
+    background-color: var(--button-background-secondary);
+    color: var(--text-light);
+}
+
+.btn-reject:hover {
+    background-color: var(--button-background-danger);
+    color: white;
+    border: none;
 }
