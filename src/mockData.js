@@ -30,7 +30,7 @@ export const buyers = [
     imageUrl: 'https://i.pravatar.cc/150?u=alexchen',
     isVerified: true,
     investmentRange: '$500k - $2M',
-    industries: ['SaaS', 'E-commerce', 'FinTech'],
+    industries: ['SAAS', 'E-COMMERCE', 'FINTECH'],
     bio: 'With over 10 years of experience scaling products at top tech companies, I am now seeking to acquire and operate a B2B SaaS company with strong product-market fit. My goal is to apply my growth expertise to take a solid business to the next level.',
     experience: [
       { role: 'Senior Product Manager', company: 'Google', years: '2018-2023' },
@@ -45,7 +45,7 @@ export const buyers = [
     imageUrl: 'https://i.pravatar.cc/150?u=samanthajones',
     isVerified: true,
     investmentRange: '$2M - $5M',
-    industries: ['Manufacturing', 'Logistics', 'Healthcare Services'],
+    industries: ['MANUFACTURING', 'LOGISTICS', 'HEALTHCARE SERVICES'],
     bio: 'As an associate at a mid-market private equity firm, I have extensive experience in financial modeling, due diligence, and deal execution. I am now looking to acquire my first business as an independent sponsor.',
     experience: [
       { role: 'Private Equity Associate', company: 'Oak Hill Capital', years: '2019-Present' },
@@ -60,7 +60,7 @@ export const buyers = [
     imageUrl: 'https://i.pravatar.cc/150?u=growthcapital',
     isVerified: false,
     investmentRange: '$1M - $10M',
-    industries: ['Digital Marketing', 'Advertising', 'Creative Services'],
+    industries: ['DIGITAL MARKETING', 'ADVERTISING', 'CREATIVE SERVICES'],
     bio: 'Growth Capital is a holding company that acquires and grows digital marketing agencies. We provide capital, strategic guidance, and shared resources to help our portfolio companies thrive.',
     experience: [
       { role: 'Acquired 5 agencies in the last 3 years' },
