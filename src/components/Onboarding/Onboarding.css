@@ -108,12 +108,13 @@
 .btn-primary {
     background-color: var(--button-background);
     color: var(--button-text-color);
-    border: 2px solid var(--button-background);
+    /* border: 1px solid var(--primary-color);  */
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
+    box-shadow: 0 2px 10px rgba(226, 212, 89, 0.1);
     transition: background-color 0.2s;
 }
 
@@ -135,14 +136,15 @@
 }
 
 .btn-secondary:hover {
-    background-color: #f0f0f0;
+    background-color: var(--border-color);
+    color: var(--text-color);
 }
 
 .tags-container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .tag-button {
@@ -152,7 +154,7 @@
   background: var(--button-background);
   cursor: pointer;
   font-size: 14px;
-  font-weight: 100;
+  font-weight: 600;
   transition: all 0.2s ease;
 }
 
@@ -224,14 +226,20 @@
   padding: 0.5rem 1rem;
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  background: white;
+  background: var(--background-color);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
+.currency-button:hover {
+  background: var(--primary-color);
+  color: var(--background-color);
+  border-color: var(--primary-color);
+}
+
 .currency-button.selected {
   background: var(--primary-color);
-  color: white;
+  color: var(--background-color);
   border-color: var(--primary-color);
 }
 

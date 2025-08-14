@@ -1,6 +1,6 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './BuyerCard.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./BuyerCard.css";
 
 /**
  * A card representing a potential buyer for a seller to review.
@@ -26,7 +26,12 @@ const BuyerCard = ({ buyer, onDecision }) => {
         <img src={buyer.imageUrl} alt={buyer.name} className="buyer-avatar" />
         <div className="buyer-info">
           <h3 className="buyer-name">
-            {buyer.name} {buyer.isVerified && <span className="verified-badge" title="Verified Buyer">✔</span>}
+            {buyer.name}{" "}
+            {buyer.isVerified && (
+              <span className="verified-badge" title="Verified Buyer">
+                ✔
+              </span>
+            )}
           </h3>
           <p className="buyer-headline">{buyer.headline}</p>
         </div>
@@ -39,19 +44,23 @@ const BuyerCard = ({ buyer, onDecision }) => {
         <div className="buyer-metric">
           <span className="metric-label">Industries</span>
           <div className="industry-tags">
-            {buyer.industries.slice(0, 3).map(industry => <span key={industry} className="tag">{industry}</span>)}
+            {buyer.industries.slice(0, 3).map((industry) => (
+              <span key={industry} className="tag">
+                {industry}
+              </span>
+            ))}
           </div>
         </div>
       </div>
       <div className="buyer-card-actions">
-        <button 
-          onClick={(e) => handleActionClick(e, () => onDecision(buyer.id, 'rejected'))} 
+        <button
+          onClick={(e) => handleActionClick(e, onDecision)}
           className="btn-reject"
         >
           Reject
         </button>
-        <button 
-          onClick={(e) => handleActionClick(e, () => onDecision(buyer.id, 'accepted'))} 
+        <button
+          onClick={(e) => handleActionClick(e, onDecision)}
           className="btn-accept"
         >
           Accept
@@ -62,4 +71,3 @@ const BuyerCard = ({ buyer, onDecision }) => {
 };
 
 export default BuyerCard;
-

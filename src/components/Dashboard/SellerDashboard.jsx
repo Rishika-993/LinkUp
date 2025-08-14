@@ -11,16 +11,10 @@ const SellerDashboard = () => {
   const [buyers, setBuyers] = useState(initialBuyers);
   const [filter, setFilter] = useState('all');
   const { user } = useUser();
-  
-  const handleDecision = (buyerId, decision) => {
-    // In a real app, this would be an API call
-    setBuyers(currentBuyers => 
-      currentBuyers.map(buyer => 
-        buyer.id === buyerId 
-          ? { ...buyer, status: decision }
-          : buyer
-      )
-    );
+
+  const handleDecision = (buyerId) => {
+    // In a real app, this would be an API call. Here, we just filter the list.
+    setBuyers(currentBuyers => currentBuyers.filter(b => b.id !== buyerId));
   };
 
   const filteredBuyers = buyers.filter(buyer => {
@@ -98,7 +92,7 @@ const SellerDashboard = () => {
         </div>
       </div>
       <div className="buyer-cards-container">
-        {filteredBuyers.map((buyer) => (
+        {filteredBuyers.map(buyer => (
           <BuyerCard key={buyer.id} buyer={buyer} onDecision={handleDecision} />
         ))}
       </div>
