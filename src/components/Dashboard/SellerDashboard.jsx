@@ -1,36 +1,54 @@
-import React, { useState } from 'react';
-import { buyers as initialBuyers } from '../../mockData';
-import { useUser } from '../../contexts/UserContext';
-import BuyerCard from './BuyerCard';
-import './SellerDashboard.css';
+import { useState } from "react";
+import { buyers as initialBuyers } from "../../mockData";
+import { useUser } from "../../contexts/UserContext";
+import BuyerCard from "./BuyerCard";
+import "./SellerDashboard.css";
 
-/**
- * The main dashboard for a seller, displaying potential buyer profiles.
- */
+
 const SellerDashboard = () => {
   const [buyers, setBuyers] = useState(initialBuyers);
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState("all");
   const { user } = useUser();
 
   const handleDecision = (buyerId) => {
     // In a real app, this would be an API call. Here, we just filter the list.
-    setBuyers(currentBuyers => currentBuyers.filter(b => b.id !== buyerId));
+    setBuyers((currentBuyers) => currentBuyers.filter((b) => b.id !== buyerId));
   };
 
-  const filteredBuyers = buyers.filter(buyer => {
-    if (filter === 'all') return true;
-    if (filter === 'verified') return buyer.isVerified;
-    return buyer.investmentRange.includes(filter);
+  const isInRange = (buyerRange, filterRange) => {
+    // Extract numbers from ranges (e.g., "$2M - $5M" -> [2, 5])
+    const getNumbers = (range) => {
+      return range.match(/\d+/g).map(Number);
+    };
+
+    if (filterRange === "1M-5M") {
+      const [min, max] = getNumbers(buyerRange);
+      return min >= 1 && max <= 5;
+    }
+
+    if (filterRange === "5M+") {
+      const [min] = getNumbers(buyerRange);
+      return min >= 5;
+    }
+
+    return false;
+  };
+
+  const filteredBuyers = buyers.filter((buyer) => {
+    if (filter === "all") return true;
+    if (filter === "verified") return buyer.isVerified;
+
+    return isInRange(buyer.investmentRange, filter);
   });
 
   const renderWelcomeMessage = () => {
     const hour = new Date().getHours();
-    let greeting = '';
-    if (hour < 12) greeting = 'Good morning';
-    else if (hour < 18) greeting = 'Good afternoon';
-    else greeting = 'Good evening';
+    let greeting = "";
+    if (hour < 12) greeting = "Good morning";
+    else if (hour < 18) greeting = "Good afternoon";
+    else greeting = "Good evening";
 
-    return `${greeting}, ${user?.name || 'Seller'}!`;
+    return `${greeting}, ${user?.name || "Seller"}!`;
   };
 
   if (buyers.length === 0) {
@@ -38,12 +56,17 @@ const SellerDashboard = () => {
       <div className="seller-dashboard">
         <div className="dashboard-header">
           <h1>{renderWelcomeMessage()}</h1>
-          <p className="last-update">Last updated: {new Date().toLocaleDateString()}</p>
+          <p className="last-update">
+            Last updated: {new Date().toLocaleDateString()}
+          </p>
         </div>
         <div className="no-buyers-card">
           <h2>All Done!</h2>
-          <p>You've reviewed all potential buyers for now. We'll notify you when new buyers match your profile.</p>
-          <button 
+          <p>
+            You've reviewed all potential buyers for now. We'll notify you when
+            new buyers match your profile.
+          </p>
+          <button
             className="refresh-button"
             onClick={() => setBuyers(initialBuyers)}
           >
@@ -86,13 +109,13 @@ const SellerDashboard = () => {
           >
             <option value="all">All Buyers</option>
             <option value="verified">Verified Only</option>
-            <option value="$1M-$5M">$1M-$5M Range</option>
-            <option value="$5M+">$5M+ Range</option>
+            <option value="1M-5M">$1M-$5M Range</option>
+            <option value="5M+">$5M+ Range</option>
           </select>
         </div>
       </div>
       <div className="buyer-cards-container">
-        {filteredBuyers.map(buyer => (
+        {filteredBuyers.map((buyer) => (
           <BuyerCard key={buyer.id} buyer={buyer} onDecision={handleDecision} />
         ))}
       </div>
@@ -101,4 +124,3 @@ const SellerDashboard = () => {
 };
 
 export default SellerDashboard;
-
